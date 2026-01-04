@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ice-Cream Sales Analysis System</title>
+
+<style>
+body{
+  font-family: Arial;
+  padding:20px;
+
+  /* Background Image */
+  background-image: url('uu.jpg');  /* put image in same folder */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* Frosted glass card container */
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:22px;
+  border-radius:18px;
+
+  background:url('Ice.jpg');
+  box-shadow:0 10px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+h2{
+  text-align:center;
+  color:#840694;
+}
+
+input{
+  width:100%;
+  padding:9px;
+  margin:6px 0 12px 0;
+  border-radius:6px;
+  border:1px solid #bbb;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:#840694;
+  border:none;
+  color:white;
+  font-size:16px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#d92f5b;
+}
+
+.result-box{
+  margin-top:18px;
+  padding:14px;
+  border-radius:12px;
+  background:#fff6fb;
+  border:1px solid #ffcfe3;
+}
+
+strong{
+  color:#b7184b;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🍦 Ice-Cream Shop Sales Analysis System</h2>
+
+<h3 style="color:#840694;">Enter Seasonal Sales </h3>
+
+<input id="summer" type="number" placeholder="Summer Season Sales">
+<input id="winter" type="number" placeholder="Winter Season Sales">
+<input id="rainy"  type="number" placeholder="Rainy / Monsoon Sales">
+
+<h3 style="color:#840694;">Enter Product-Wise Sales</h3>
+
+<input id="cones" type="number" placeholder="Cones Sales">
+<input id="tubs" type="number" placeholder="Family Tubs Sales">
+<input id="sundae" type="number" placeholder="Sundae Sales">
+
+<button onclick="analyzeSales()">Analyze & Get Suggestions</button>
+
+<div id="output" class="result-box"></div>
+
+</div>
+
+<script>
+function analyzeSales() {
+
+  let summer = Number(document.getElementById("summer").value);
+  let winter = Number(document.getElementById("winter").value);
+  let rainy  = Number(document.getElementById("rainy").value);
+
+  let cones  = Number(document.getElementById("cones").value);
+  let tubs   = Number(document.getElementById("tubs").value);
+  let sundae = Number(document.getElementById("sundae").value);
+
+  if(!summer || !winter || !rainy){
+    alert("Please enter all seasonal sales values");
+    return;
+  }
+
+  let seasons = { "Summer": summer, "Winter": winter, "Rainy": rainy };
+
+  let highest = Object.keys(seasons).reduce((a,b)=> seasons[a] > seasons[b] ? a : b);
+  let lowest  = Object.keys(seasons).reduce((a,b)=> seasons[a] < seasons[b] ? a : b);
+
+  let suggestion = "";
+
+  if(lowest === "Winter"){
+    suggestion += `
+    <strong>Sales are low in Winter — Suggested Actions:</strong><br>
+    • Introduce Hot Dessert + Ice-Cream Combos<br>
+    • Add Waffles / Brownie with Ice-Cream<br>
+    • Start Coffee & Hot Chocolate menu<br>
+    • Offer 15% discount on Family Packs<br>
+    • Launch Weekend & Festival offers<br><br>`;
+  }
+  else if(lowest === "Rainy"){
+    suggestion += `
+    <strong>Sales are low in Monsoon — Suggested Actions:</strong><br>
+    • Add Home Delivery & Online Orders<br>
+    • Introduce Family Combo Packs<br>
+    • Run WhatsApp Order Promotions<br>
+    • Offer Monsoon Discount Coupons<br><br>`;
+  }
+  else {
+    suggestion += `
+    <strong>Sales are unexpectedly low in Summer — Suggested Actions:</strong><br>
+    • Promote Cold Drink + Ice-Cream Combos<br>
+    • Launch Student Evening Offers<br>
+    • Add Birthday & Party Pack Deals<br><br>`;
+  }
+
+  suggestion += "<strong>Product-wise Recommendations:</strong><br>";
+
+  if(cones < tubs) suggestion += "• Run Buy-2-Get-1 offer on Cones<br>";
+  if(sundae < tubs) suggestion += "• Promote Sundaes as budget option<br>";
+  if(tubs < cones) suggestion += "• Introduce Family Party Pack Discounts<br>";
+
+  document.getElementById("output").innerHTML = `
+    <strong>Highest Sales Season:</strong> ${highest}<br>
+    <strong>Lowest Sales Season:</strong> ${lowest}<br><br>
+    ${suggestion}
+  `;
+}
+</script>
+
+</body>
+</html>
