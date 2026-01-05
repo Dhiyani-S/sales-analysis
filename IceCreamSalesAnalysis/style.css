@@ -1,0 +1,56 @@
+body{
+  font-family: Arial;
+  padding:20px;
+  background-image: url('uu.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:22px;
+  border-radius:18px;
+  background:url('Ice.jpg');
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+h2, h3{
+  text-align:center;
+  color:#840694;
+}
+
+input{
+  width:100%;
+  padding:9px;
+  margin:6px 0 12px;
+  border-radius:6px;
+  border:1px solid #bbb;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:#840694;
+  border:none;
+  color:white;
+  font-size:16px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#d92f5b;
+}
+
+.result-box{
+  margin-top:18px;
+  padding:14px;
+  border-radius:12px;
+  background:#fff6fb;
+  border:1px solid #ffcfe3;
+}
+
+strong{
+  color:#b7184b;
+}
