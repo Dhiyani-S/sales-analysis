@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ice-Cream Sales Analysis System</title>
-  <link rel="stylesheet" href="style.css">
+<title>Ice-Cream Sales Analysis System</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
 <div class="container">
 
-  <h2>🍦 Ice-Cream Shop Sales Analysis System</h2>
+<h2>🍦 Ice-Cream Shop Sales Analysis System</h2>
 
-  <h3>Enter Seasonal Sales</h3>
-  <input id="summer" type="number" placeholder="Summer Season Sales">
-  <input id="winter" type="number" placeholder="Winter Season Sales">
-  <input id="rainy"  type="number" placeholder="Rainy / Monsoon Sales">
+<h3>Enter Seasonal Sales</h3>
+<input id="summer" type="number" placeholder="Summer Season Sales">
+<input id="winter" type="number" placeholder="Winter Season Sales">
+<input id="rainy"  type="number" placeholder="Rainy / Monsoon Sales">
 
-  <h3>Enter Product-Wise Sales</h3>
-  <input id="cones" type="number" placeholder="Cones Sales">
-  <input id="tubs" type="number" placeholder="Family Tubs Sales">
-  <input id="sundae" type="number" placeholder="Sundae Sales">
+<h3>Enter Product-Wise Sales</h3>
+<input id="cones" type="number" placeholder="Cones Sales">
+<input id="tubs" type="number" placeholder="Family Tubs Sales">
+<input id="sundae" type="number" placeholder="Sundae Sales">
 
-  <button onclick="analyzeSales()">Analyze & Get Suggestions</button>
+<button onclick="analyzeSales()">Analyze & Get Suggestions</button>
 
-  <div id="output" class="result-box"></div>
+<!-- Canvas for line graph -->
+<canvas id="salesChart" height="120"></canvas>
+
+<div id="output" class="result-box"></div>
 
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
+
